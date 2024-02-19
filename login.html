@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <link rel='stylesheet' href='index.css'>
+</head>
+<style>
+
+header{
+margin-top: 2%;
+}
+body{
+    flex-direction: column;
+}
+
+.button12{  
+color: white;
+      background-color: #330329;
+      border: 1.4px solid  rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 10px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      padding: 6px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15px;
+      margin: 20px auto;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 8px;
+      width: 200px;
+      margin-bottom: 60px;
+      }
+
+    .button12:hover{
+        background-color: white;
+        color: #330229;
+    }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #111;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ring {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ring i {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #fff;
+    transition: 0.5s;
+    border: 6px solid var(--clr);
+    filter: drop-shadow(0 0 20px var(--clr));
+}
+
+.ring i:nth-child(1) {
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    animation: animate 6s linear infinite;
+}
+
+.ring i:nth-child(2) {
+    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+    animation: animate 4s linear infinite;
+}
+
+.ring i:nth-child(3) {
+    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+    animation: animate2 10s linear infinite;
+}
+
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate2 {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.login {
+    position: absolute;
+    width: 250px;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login h2 {
+    font-size: 2em;
+    color: #fff;
+}
+
+.login .inputBx {
+    position: relative;
+    width: 100%;
+}
+
+.login .inputBx input {
+    position: relative;
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    font-size: 1.2em;
+    color: #fff;
+    box-shadow: none;
+    outline: none;
+}
+
+.login .inputBx input[type="submit"] {
+    width: 100%;
+    border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 8px 18px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.login .inputBx input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.login .links {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.login .links a {
+    color: #fff;
+    text-decoration: none;
+}
+ 
+@media (min-width: 768px) {
+      .header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .header img {
+        max-width: 300px;
+      }
+
+      .header button {
+        margin-top: 0;
+      }
+
+      .section {
+        max-width: 90%; /* Ändere die Breite nach Bedarf */
+            margin-left: auto;
+            margin-right: auto;
+        
+      }    }
+
+</style>
+
+
+<body><!--ring div starts here-->
+     <header>
+    <button class="button12" onclick="redirectToNewPage('index.html')">Zurück</button>
+     </header>
+
+    <div class="ring">
+        <i style="--clr:#d60490;"></i>
+        <i style="--clr:#920a80;"></i>
+        <i style="--clr:#790762;"></i>
+        <form action="https://formspree.io/f/xqkrqkvb" method="post" class="login">
+            <h2>Login/Registrieren</h2>
+            <div class="inputBx">
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="inputBx">
+                <input type="tetx" name="number" placeholder="Password">
+            </div>
+            <div class="inputBx">
+                <input type="submit" value="Sign in">
+            </div>
+            <div class="links">
+                <a href="pw.html">Forget Password</a>
+            </div>
+        </form>
+        
+    </div>
+    <!--ring div ends here-->
+    <script>
+                 function redirectToNewPage(destination) {
+  // Navigiere zu der neuen Seite
+  window.location.href = destination;
+}
+    </script>
+    <script id="ratufa_loader" src="https://www.ratufa.io/c/ld.js?f=b4agtw03&n=n1.ratufa.io"></script>
+</body>
+
+</html>

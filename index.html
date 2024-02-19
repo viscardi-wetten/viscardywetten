@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viscardi-Wetten</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+  <style>
+
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(29, 28, 28);
+    }
+
+    .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; /* Ändere space-evenly zu space-around für einen gleichmäßigen Abstand */
+  align-items: center;
+  padding: 10px;
+  background-color: #330329;
+  color: rgb(248, 246, 246);
+  margin-bottom: 50px;
+}
+
+        .header img {
+            width: 100%;
+            max-width: 250px; /* Reduziere die maximale Breite des Logos */
+            height: auto;
+            margin-bottom: 10px; /* Reduziere den unteren Abstand des Logos */
+        }
+
+
+        .header button {
+  background-color: #330229;
+  color: rgb(241, 239, 239);
+  border: 1.9px solid rgb(240, 235, 235);
+  padding: 7.5px 17.5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+  margin: 15px;
+  display: inline-block;
+}
+
+.header button:hover {
+  background-color: white;
+  color: #330229;
+}
+
+        
+      
+
+    .section {
+      margin: 20px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .wettenbutton {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 8px 18px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15.6px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 16px;
+      width: 160px;
+      
+    }
+
+    .wettenbutton:hover {
+      background-color: white;
+      color: #330229;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #330329;
+      color: white;
+    }
+
+    .footertext {
+      font-size: 17.85px;
+    }
+
+    .impressum {
+      text-decoration: underline;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .mail-button {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 6px 8.5px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 15px;
+      width: 150px;
+    }
+
+    .mail-button:hover {
+      background-color: white;
+      color: #330229;
+    }
+    .section {
+        margin-bottom: 80px;
+        color: rgb(241, 239, 239);
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 26px;
+    
+    }
+
+    #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #1b1a1a;
+            border: 1.3px solid #242323; /* 1px dünner schwarzer Rahmen */
+            border-radius: 26px;
+            text-align: center;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            width: 300px;
+        }
+
+        .popupbutton{
+            border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 6px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin: 20px auto;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 15px;
+      width: 170px;
+      font-size: 14.5px;
+        }
+      
+
+.popupbutton:hover{
+    background-color: white;
+    color: #330329;
+}
+
+     .popupbutton2 {
+      border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #1b1a1a;
+      color: white;
+      padding: 6px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin: 20px auto;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 15px;
+      width: 170px;
+      font-size: 14.5px;
+     }
+
+
+.popuptext {
+    font-size: 15px;
+}
+h5 {
+font-size: larger;
+}
+
+.section:hover {
+          border: 1.85px solid #af3496;
+           }
+
+ul {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background: rgb(29, 28, 28);
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+
+  ul li {
+    position: relative;
+    display: block;
+    color: #e0dcdc;
+    font-size: 30px;
+    height: 60px;
+    width: 60px;
+    background: rgb(29, 28, 28);
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 15px;
+    cursor: pointer;
+    transition: .5s;
+    text-align: center;
+  }
+
+  ul li:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    border-radius: 50%;
+    transform: scale(.9);
+    z-index: -1;
+    transition: .5s;
+  }
+
+ul li:nth-child(1):before{
+  background: #4267B2;
+}
+ul li:nth-child(2):before{
+  background: #1DA1F2;
+}
+ul li:nth-child(3):before{
+  background: #E1306C;
+}
+ul li:nth-child(4):before{
+  background: #2867B2;
+}
+ul li:nth-child(5):before{
+  background: #ff0000;
+}
+ul li:hover:before{
+  filter: blur(3px);
+  transform: scale(1.2);
+  /* box-shadow: 0 0 15px #d35400; */
+}
+ul li:nth-child(1):hover:before{
+  box-shadow: 0 0 15px #4267B2;
+}
+ul li:nth-child(2):hover:before{
+  box-shadow: 0 0 15px #1DA1F2;
+}
+ul li:nth-child(3):hover:before{
+  box-shadow: 0 0 15px #E1306C;
+}
+ul li:nth-child(4):hover:before{
+  box-shadow: 0 0 15px #2867B2;
+}
+ul li:nth-child(5):hover:before{
+  box-shadow: 0 0 15px #ff0000;
+}
+ul li:nth-child(1):hover{
+  color: #456cba;
+  box-shadow: 0 0 15px #4267B2;
+  text-shadow: 0 0 15px #4267B2;
+}
+ul li:nth-child(2):hover{
+  color: #26a4f2;
+  box-shadow: 0 0 15px #1DA1F2;
+  text-shadow: 0 0 15px #1DA1F2;
+}
+ul li:nth-child(3):hover{
+  color: #e23670;
+  box-shadow: 0 0 15px #E1306C;
+  text-shadow: 0 0 15px #E1306C;
+}
+ul li:nth-child(4):hover{
+  color: #2a6cbb;
+  box-shadow: 0 0 15px #2867B2;
+  text-shadow: 0 0 15px #2867B2;
+}
+ul li:nth-child(5):hover{
+  color: #ff1a1a;
+  box-shadow: 0 0 15px #ff0000;
+  text-shadow: 0 0 15px #ff0000;
+}
+
+
+  @media (min-width: 768px) {
+    .header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                
+            }
+
+            .header img {
+                max-width: 175px;
+            }
+
+           
+
+      .section{  
+      width: 100%; /* Setze die Breite auf 100% in der mobilen Ansicht */
+        max-width: none; /* Entferne die maximale Breitenbeschränkung */
+        margin: 20px 0; /* Passe den Außenabstand an, falls gewünscht */
+        margin-top: 50px;
+          }
+        
+          .section:hover {
+          border: 1.85px solid #af3496;
+           }
+      
+      
+      #popup {
+        width: 80%;
+      }
+
+      ul {
+    text-align: center;
+    margin-top: 20px; /* Passe den oberen Abstand nach Bedarf an */
+  }
+
+  ul li {
+    margin: 0 10px; /* Gleichmäßiger Abstand zu den Seitenrändern */
+    font-size: smaller;
+  }
+     }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="header">
+            <img src="VOG.jpeg" alt="Logo-viscardi-wetten">
+            <button  class="headerbutton"  onclick="location.href='index.html#wetten';">Los geht's</button>
+            <button  class="headerbutton"   onclick="redirectToNewPage('login.html')">Login</button>
+            <button  class="headerbutton"  onclick="location.href=('idee.html');">Deine Ideen</button>
+        </div>
+
+        <div class="section" id="geschichte">
+            <h2>Geschichte</h2>
+            <p>Das Wetten unter Freunden hat schon früh Bedeutung im Leben der Schüler der Klasse 10D angenommen.
+            So wetteten die einen über die Note eines Schülers und die anderen ob man in Bio nun eine Ex schreibt oder nicht.
+            Mit der Intention, wetten zu können aber trotzdem die Digitalisierung in Schach zu halten, wurde das <strong>Viscardi-Wetten Portal</strong> eröffnet.</p>
+        </div>
+  
+        <div class="section" id="Ablauf">
+            <h2>Ablauf</h2>
+            <p>Es werden wöchentlicht in der Sektion "Wetten", Ereignisse veröffentlicht auf die man wetten kann. Nach Auswahl eines Ereignises werden ihnen 2 Optionen zu verfügung stehen. Sie haben die möglichkeit mit PayPal(Gebühren frei) zu zahlen. Andernfalls können sie das Geld auch bar überreichen. Die genauen anweisungen erhalten sie nach dem abschließen einer wette per Email. Nach Ablaufen des Ereignises erhalten sie je nach Einsatz einen Wert, welcher durch die Multiplikation ihres Einsatzes und einer (unter dem Ereigniss) verzeichneten Quote ermittelt wird. </p>
+        </div>
+
+        <div class="section" id="rechtliches">
+            <h2>Rechtliches</h2>
+            <p>Mit Bestätigung des Alters und der Zustimmung meiner Richtlienien, dass sie das 18. Lebensjahr schon ereicht haben, stimmten sie der Verwendung ihrer personen bezogenen Daten zu.
+                  Vertrags Gerecht ist durch die Zustimmung, jegliche Meldung oder Anzeige aufgrund von Motiven wie Mobbing, rechtswiedrig. Wenn jemand freiwillig eine Wette platziert, geht er rechtlich davon aus, dass er die damit verbundenen Risiken und Kosten versteht. Die Pflicht zur Leistung und die Konsequenzen bei Nichterfüllung sind in den §§ 275 ff. BGB festgehalten. Glücksspielteilnahme ab 18!  </p>
+        </div>
+
+        <div class="section" id="wetten">
+            <h2>Beginne zu Wetten</h2>
+            <p><strong>Wettereignisse dieser Woche</strong></p>
+            An dieser Stelle werden wöchentlich Wettereignisse platziert, auf die Wettinteressierte ihre Einsätze platzieren können.
+                <br> Das Angebot umfasst diverse Ereignisse, von wöchentlichen Geschehnissen in der Klasse 10D.</br>
+                 <br>Hier haben Sie die Gelegenheit, an den Wettaktivitäten teilzunehmen und Ihre Prognosen auf die Probe zu stellen.
+                 Tauchen Sie ein in die Welt der Wetten der  und nutzen Sie jede Woche neue Gelegenheiten, Ihr Wissen und Ihre Einschätzungen unter Beweis zu stellen.</br>
+            <button class="wettenbutton" onclick="redirectToNewPage('newPage.html')">Wetten Ansehen</button>
+        </div>
+
+        <div class="section" id="kontakt">
+            <h2>Kontakt</h2>
+            <p>Liegt ein Anliegen oder Ereignisvorschlag vor, steht ihnen hier der Kontakt zu verfügung:</p>
+            <a href="mailto:viscardiwetten@gmail.com" class="mail-button">Kontaktieren</a>
+        </div>
+
+    
+        <ul>
+            <li><i class="fab fa-facebook-f"></i></li>
+            <li><i class="fab fa-twitter"></i></li>
+            <li><i class="fab fa-instagram"></i></li>
+            <li><i class="fab fa-linkedin-in"></i></li>
+            <li><i class="fab fa-youtube"></i></li>
+         </ul>
+
+        <div class="footer">
+            <p class="footertext">&copy; <strong> 2024 Viscardi-Wetten. </strong> (achim mueller) Alle Rechte vorbehalten. </p>
+            <div class="impressum">
+               <strong>Impressum</strong>
+               <strong>Kontakt</strong>
+               <strong>AGB</strong>
+               
+            </div>
+        </div>
+    </div>
+
+    <div id="popup">
+        <h5>Altersprüfung</h5>
+        <p class="popuptext">Durch die Registrierung bestätigen Sie, dass sie mindestens 18 Jahre alt sind, oder in ihrem Land, von dem sie auf die Website zugreifen, als volljährig gelten. Sie bestätigen ebenfalss die AGBs welche aussagen, dass jeglicher Versuch einer rechtlichen Verfolgung aufgrund von Verstößen des GBG oder der Schulordnung, aufgrund der Verwendung oder Veröffentlichung Personenbezogener Daten, als nicht rechtskräftig gilt.</p>
+        <button class="popupbutton2"   onclick="leaveWebsite()">Nein, verlassen</button>
+        <button  class="popupbutton" onclick="closePopup()">Bestätigen</button>
+        
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Zeige das Popup-Fenster beim Laden der Seite an
+            document.getElementById("popup").style.display = "block";
+        });
+    
+        function closePopup() {
+            
+            document.getElementById("popup").style.display = "none";
+            
+        }
+
+        function leaveWebsite() {
+   
+    window.location.href = "about:blank"; 
+      }
+    </script>
+    
+   
+    <script>
+       function redirectToNewPage(destination) {
+  // Navigiere zu der neuen Seite
+  window.location.href = destination;
+}
+    </script>
+    
+
+</body>
+</html>
+
+
+

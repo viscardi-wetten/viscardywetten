@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viscardi-Wetten</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <style>
+
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(29, 28, 28);
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-color: #330329;
+      color: white;
+    }
+
+    .header img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .header button {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 6px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 8px;
+      width: 200px;
+    }
+
+    .header button:hover {
+      background-color: white;
+      color: #330329;
+    }
+
+    .section {
+      margin: 20px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .wettenbutton {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 8px 18px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15.6px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 8px;
+      width: 200px;
+      
+    }
+
+    .wettenbutton:hover {
+        background-color: white;
+      color: #330329;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #330329;
+      color: white;
+    }
+
+    .footertext {
+      font-size: 17.85px;
+    }
+
+    .impressum {
+      text-decoration: underline;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .zurückbutton2 {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 6px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 8px;
+      width: 200px;
+    }
+
+    .zurückbutton2:hover {
+      background-color: white;
+      color: #330329;
+    }
+    .section {
+        margin-bottom: 80px;
+        color: rgb(240, 235, 235);
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 26px;
+    
+    }
+
+    .gelesenbutton {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 8px 18px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15.6px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 15px;
+      width: 170px;
+      
+    }
+
+    .gelesenbutton:hover {
+        background-color: white;
+      color: #330329;
+    }
+    
+
+    .success-icon {
+      display: none;
+      color: green;
+      font-size: 24px;
+      margin-left: 10px;
+    }
+
+    #myButton {
+      display: inline-block;  /* Hält den Button inline, damit er nicht umbricht */
+    }
+
+    form {
+      background-color:  rgb(29, 28, 28);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 60px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color:  white;   
+    }
+
+    
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      color: white;
+      background-color: rgb(29, 28, 28);
+      border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 14.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+    font-size: larger;
+    }
+
+    input[type="text"]::before,
+    input[type="email"]::before,
+    input[type="number"]::before,
+    select::before {
+      content: attr(data-label) ": ";
+      color: white;
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: block;
+      border-radius: 8px;
+      background-color: rgb(29, 28, 28);
+        color: rgb(240, 235, 235);
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 14.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+    font-size: larger;
+    }
+      
+
+    .button10 {
+        border: 1.4px solid rgb(240, 235, 235); /* 1px dünner schwarzer Rahmen */
+    padding: 16.5px; /* Innenabstand für den Text */
+    border-radius: 8px;
+      background-color: #330229;
+      color: white;
+      padding: 8px 18px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 15.6px;
+      margin: 20px auto;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 15px;
+      width: 170px;
+    }
+    .button10:hover {
+        background-color: white;
+      color: #330329;
+    }
+
+
+
+    @media (min-width: 768px) {
+      .header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .header img {
+        max-width: 300px;
+      }
+
+      .header button {
+        margin-top: 0;
+      }
+
+      .gelesenbutton {
+        text-align: center;
+      }
+
+      .section {
+        max-width: 600px; /* Ändere die Breite nach Bedarf */
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            width: 580px;
+
+        
+      }    }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Checkout</h1>
+            <button class="zurückbutton2" onclick="redirectToNewPage('newPage.html')">Zurück</button>
+        </div>
+       
+  
+        <div class="section" id="Ablauf">
+            <h2>Reminder</h2>
+            <p>Im Kontext einer platzierten Wette und entsprechender vertraglicher Regelungen unter Berücksichtigung der Bestätigung der Volljährigkeit des Teilnehmers ergibt sich eine bindende rechtliche Vereinbarung. Gemäß § 134 des Bürgerlichen Gesetzbuches (BGB) ist eine Vereinbarung, die gegen ein gesetzliches Verbot verstößt, nichtig. Die Annahme der Wettbedingungen impliziert die Zustimmung, den festgelegten Betrag gemäß § 433 BGB bei entsprechendem Wettergebnis zu entrichten.</p>
+            <p>Nichterfüllung der vertraglichen Verpflichtungen könnte zu rechtlichen Konsequenzen führen. Darüber hinaus bin ich berechtigt, personenbezogene Daten des Teilnehmers zu verwenden, um die notwendigen rechtlichen Schritte einzuleiten, beziehungsweise die durch das Bestätigen der AGBs beim Besuch der Website enstandene Genehmigung der Verwendung und der teilurheberechts Übertragung, zu nutzen, um gegen die Nichterfüllung "vorzugehen" .
+                 Es sei zu beachten, dass die negative Verwendung von ihren personenbezogenen Daten den rechtlichen Rahmenbedingungen und Datenschutzbestimmungen unterliegt, 
+                 welche sie am Anfang bestätigten.</p>
+                 
+                 <button  class="gelesenbutton"  id="myButton" onclick="showSuccessIcon()" required>Verstanden</button>
+  <span id="successIcon" class="success-icon">&#10004;</span>
+
+  <script>
+    function showSuccessIcon() {
+      var button = document.getElementById('myButton');
+      var successIcon = document.getElementById('successIcon');
+
+      // Button ausblenden
+      button.style.display = 'none';
+
+      // Grünen Haken anzeigen
+      successIcon.style.display = 'inline';
+    }
+    </script>
+      </div>
+
+        <form   action="https://formspree.io/f/xleqbeyl" method="post">
+            <label for="ereignissNr">Ereigniss</label>
+            <select id="ereignissNr" name="ereignissNr" required>
+              <option value="1">1<option>
+            </select>
+
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" required>
+        
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname" required>
+        
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="betrag">Geldbetrag in Euro:</label>
+             <input type="number" id="betrag" name="betrag" required>
+             <span id="betrag-error" class="error"></span>
+            
+             <script> const betragInput = document.getElementById('betrag');
+              const betragError = document.getElementById('betrag-error');
+              
+              betragInput.addEventListener('input', () => {
+                if (parseFloat(betragInput.value) < 0.5) {
+                  betragError.textContent = 'Der Mindestbetrag beträgt 0,5 Euro.';
+                } else {
+                  betragError.textContent = '';
+                }
+              });
+              </script>
+              <style>
+                .error {
+                  color: red;
+          
+                }
+              </style>
+
+
+              <label for="zahlungsmethode">Zahlungsmethode:</label>
+             <select id="zahlungsmethode" name="zahlungsmethode" required>
+               <option value="bar">Barzahlung</option>
+               <option value="paypal">Paypal</option>
+              </select>
+            
+              <button class="button10" type="submit">Wette plazieren</button>
+             </form>
+            
+  
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script> 
+        function sendEmail(){
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "flo2cm@gmail.com",
+    Password : "BA2CEA2F0FBB0F41451B51E03A05CE173D7F",
+    To : 'viscardiwetten@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "Neue Wettplazierung",
+    Body : "vorname:  " + document.getElementById("vorname").value
+          + "nachname:  " + document.getElementById("nachname").value
+          + "<br> email: " + document.getElementById("emai").value
+          + "<br> betrag:  " + document.getElementById("betrag").value
+          + "<br> zahlungsmethode:  " + document.getElementById("zahlungsmethode").value
+}).then(
+  message => alert(message)
+);
+        }
+        </script>
+
+     
+
+        <div class="footer">
+            <p class="footertext">&copy; <strong> 2024 Viscardi-Wetten. </strong> (achim mueller) Alle Rechte vorbehalten. </p>
+            <div class="impressum">
+               <strong>Impressum</strong>
+               <strong>Kontakt</strong>
+               <strong>AGB</strong>
+               
+            </div>
+        </div>
+    </div>
+     
+    <script>
+           function redirectToNewPage(destination) {
+  // Navigiere zu der neuen Seite
+  window.location.href = destination;
+}
+    </script>
+<script id="ratufa_loader" src="https://www.ratufa.io/c/ld.js?f=iwsp73rt&n=n1.ratufa.io"></script>
+
+</body>
+</html>
